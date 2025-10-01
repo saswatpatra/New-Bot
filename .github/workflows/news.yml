@@ -2,12 +2,15 @@ name: News Scraper Bot
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
+    - cron: "0 */6 * * *"   # runs every 6 hours
   workflow_dispatch:        # lets you run manually from GitHub Actions tab
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write        # ✅ allow pushing commits
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
